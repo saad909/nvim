@@ -97,11 +97,11 @@ asktoinstallnode() { \
 }
 
 asktoinstallpip() { \
-  # echo "pip not found"
-  # echo -n "Would you like to install pip now (y/n)? "
-  # read answer
-  # [ "$answer" != "${answer#[Yy]}" ] && installpip
-  echo "Please install pip3 before continuing with install"
+   echo "pip not found"
+   echo -n "Would you like to install pip now (y/n)? "
+   read answer
+   [ "$answer" != "${answer#[Yy]}" ] && installpip
+  #sudo apt install -y python3-pip
   exit
 }
 
@@ -118,6 +118,7 @@ installonubuntu() { \
   sudo apt install libjpeg8-dev zlib1g-dev python-dev python3-dev libxtst-dev
   pip3 install ueberzug
   pip3 install neovim-remote
+  
 }
 
 
