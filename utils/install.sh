@@ -135,8 +135,8 @@ installextrapackages() { \
   [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ] && echo "Windows not currently supported"
 }
 escape(){
-sudo apt install -y xcape
-mkdir -p ~/.local/bin; cp utils/remaps ~/.local/bin/ &&  chmod +x ~/.local/bin/remaps
+sudo apt install -y xcape;sudo pacman -S xcape
+mkdir -p ~/.local/bin; cp remaps ~/.local/bin/ &&  chmod +x ~/.local/bin/remaps
 echo "export PATH=$PATH:~/.local/bin" >> ~/.profile && echo "remaps &" >> ~/.profile
 export PATH=~/.local/bin && remaps &
 
@@ -144,7 +144,7 @@ export PATH=~/.local/bin && remaps &
 }
 
 # Welcome
-echo 'Installing Nvim Mach 2'
+echo 'Installing Nvim'
 
 # install pip
 which pip3 > /dev/null && echo "pip installed, moving on..." || asktoinstallpip
