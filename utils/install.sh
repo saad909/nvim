@@ -66,7 +66,7 @@ installcocextensions() { \
 }
 
 cloneconfig() { \
-  echo "Cloning Nvim  configuration"
+  echo "Cloning Nvim Mach 2 configuration"
   git clone https://github.com/saad909/nvim.git ~/.config/nvim
 }
 
@@ -97,11 +97,11 @@ asktoinstallnode() { \
 }
 
 asktoinstallpip() { \
-   echo "pip not found"
-   echo -n "Would you like to install pip now (y/n)? "
-   read answer
-   [ "$answer" != "${answer#[Yy]}" ] && installpip
-  #sudo apt install -y python3-pip
+  # echo "pip not found"
+  # echo -n "Would you like to install pip now (y/n)? "
+  # read answer
+  # [ "$answer" != "${answer#[Yy]}" ] && installpip
+  echo "Please install pip3 before continuing with install"
   exit
 }
 
@@ -118,7 +118,6 @@ installonubuntu() { \
   sudo apt install libjpeg8-dev zlib1g-dev python-dev python3-dev libxtst-dev
   pip3 install ueberzug
   pip3 install neovim-remote
-  
 }
 
 
@@ -134,17 +133,9 @@ installextrapackages() { \
   [ -f "/etc/arch-release" ] && installonarch
   [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ] && echo "Windows not currently supported"
 }
-escape(){
-sudo apt install -y xcape
-mkdir -p ~/.local/bin; cp ~/nvim/utils/remaps ~/.local/bin/ &&  chmod +x ~/.local/bin/remaps
-echo "export PATH=$PATH:~/.local/bin" >> ~/.profile && echo "remaps &" >> ~/.profile
-export PATH=~/.local/bin && remaps &
-
-
-}
 
 # Welcome
-echo 'Installing Nvim'
+echo 'Installing Nvim Mach 2'
 
 # install pip
 which pip3 > /dev/null && echo "pip installed, moving on..." || asktoinstallpip
@@ -174,7 +165,7 @@ cloneconfig
 which nvim > /dev/null && installplugins
 
 installcocextensions
-escape
+
 echo "I recommend you also install and activate a font from here: https://github.com/ryanoasis/nerd-fonts"
 
 echo "I also recommend you add 'set preview_images_method ueberzug' to ~/.config/ranger/rc.conf"
